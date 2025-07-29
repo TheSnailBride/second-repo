@@ -1,0 +1,144 @@
+## 깃허브 특강 (1일차) ##
+점심 : 11시50분 ~ 1시10분
+종료 : 17시51분
+. 강의 대상 : 깃/깃허브 처음 만나는 수강생
+. 미니 특강
+   - 리눅스 설치 + 리눅스 기본 명령 --> WSL(Windows Subsystem for Linux)
+   - 자격증 관련 (취업에 도움이 될) >> 개인 의견
+
+. 올림픽 대표(스포츠 전문가)선수의 공통 필수 역량? 체력.
+. IT 전문가의 공통 필수 역량? 코딩 실력 + AI 활용(코웍)
+. 코딩 전문가 --> 결과 : 소스 코드 --> 소스코드 관리의 필요성
+   ---> 깃(Git) + 깃허브(GitHub)
+
+https://cafe.naver.com/githubstudy/18 --> 암호 : git@git
+
+## 소프트웨어 라이선스 구분 ##
+. 상용 프로그램 : 비용 지불하고 사용. Windows, Office, HWP, Photoshop....., 알집
+. Shareware : 일정기간만 무료. 그 이후는 유료. Winzip
+. Freeware : 무료로 사용. 반디집, 카카오톡, .........
+. Open Source : 무료로 사용 + 소스코드도 공개.
+		철학 : 자유. 다운로드의 자유. 배포의 자유. 수정의 자유. 판매의 자유.\
+		GNU/GPL
+
+Microsoft는 오픈 소스 진영의 최대의 적(!) : MS는~~  M$는 ~~~
+
+## 디렉터리(=폴더) 경로 ##
+DOS(Windows) :  C:\gitStudy\Test1  --->  코딩 "C:\\gitStudy\\Test1"
+		    C:/gitStudy/Test1
+Unix(=Linux=Mac) :  /gitStudy/Test1  --> 코딩 "/gitStudy/Test1 "
+
+## WSL 설치 ##
+(0) 권장이 [Windows 업데이트] 실행 권장.
+(0) BIOS에서 CPU 가상화가 On 되어 있어야 함. (대부분 되어 있음)
+	https://cafe.naver.com/thisislinux/6397
+(1) Windows 기능 켜기/끄기에서  'Linux용 Windows 하위 시스템' 체크 후, 재부팅
+(2) 파워셸을 실행해서 다음 입력
+    wsl  --update
+    (만약, 재부팅 요청하면 다시 재부팅)
+(3) 다시 파워셸에서
+    wsl  --install  -d  Ubuntu    ==> 우분투 리눅스 다운로드 및 설치 
+** 문제 발생시, Hyper-V 켜기
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:Hyper-V /all /norestart --> (안되면 무시)
+컴퓨터 재부팅
+** 그래도 오류 발생시
+   Microsoft Store 실행 --> wsl 검색 --> Ubuntu <다운로드> 클릭
+(4) 한동안 설치 후 리눅스 프롬프트 나옴.
+    Unix username~~~  :  karina
+    password : karina  ==> 입력 안보임. 그냥 입력 후 엔터 (2회)
+(5) 프롬프트가 $로 변경됨 : WSL에 설치된 우분투 리눅스
+
+## 미니 특강1 : 리눅스 설치 및 기본 명령어 ##
+* 리눅스 설치 방법
+   - 별도의 컴퓨터에 설치
+   - 가상머신을 사용 : VMweare, Virtual Box, Hyper-V
+   - Docker를 사용 : 완전한 리눅스X, 일부 기능
+   - WSL : Windows Subsystem for Linux
+* WSL 간단 개요
+   - 시작 Windows 10. 1주년 기념으로 릴리즈.
+* 셸(Shell) : 명령어 해석기
+  . 명령 프롬프트 : DOS(Windows)부터 시작.....  --> 명령어 수십개
+  . 파워셸 : PowerShell --> 명령어 수천개 (새로운 명령)
+  . 리눅스를 윈도에 포함 : WSL. 우분투와 시작..... 지금은 다른 다양한 리눅스 가능
+  .Unix(=Linux,Mac) : Bash Shell --> 명령어 수천개
+* WSL 명령어
+  wsl  --install  : WSL 설치 (= Windows 기능에서 'Linux용 Windows 하위 시스템' 체크 )
+  wsl  --install  -d  리눅스배포판 : 리눅스 설치
+  wsl  --list  --online : 설치 가능한 리눅스 배포판 목록
+  wsl  --list  : 설치된 리눅스 목록
+  Microsoft Store에 가면, 더 많은 리눅스 종류를 제공함.
+
+** 리눅스 기본 명령어 **
+. pwd  : Print Working Directory. 나 어디지? 기본은 자신의 홈폴더
+. cd  디렉터리명 : Change Directory 폴더 이동
+. cd  ..  : 상위 폴더로 이동
+. cd : 내 홈폴더로 뽕 이동.
+. ls  -l  :  List. 여기 뭐뭐 있지?
+. clear : 화면 깨끗하게.
+. mkdir 폴더명 : Make Directory.
+. touch  파일명 : 빈 파일 생성
+. cp  원본  타겟
+. mv 원본  타겟 : 이름 변경, 다른 폴더로 이동
+. rm  -f  파일명 : Remove. 파일 삭제
+. rm  -rf  폴더명 : 폴더 삭제
+. vi  파일명 --> (명령모드) --> i  --> (편집모드) --> ESC --> (명령모드)
+    --->  :wq
+. cat  파일명
+
+** 퀴즈 : 자신의 홈폴더(cd)에서  
+   - dir1/dir2/dir3 폴더 생성하고,
+   - dir3 폴더에 file1.txt 생성
+   - file1.txt를 file2.txt로 복사
+   - file2.txt를 myfile2.txt로 이름 변경
+   - myfile2.txt를  /home/자기이름  폴더로 이동
+   - file1.txt 파일 삭제
+   - cd 로 자기 폴더로 와서, dir1 폴더 삭제
+   - myfile2.txt에 내용 채우고 저장하기
+
+** 퀴즈 : cmd-repo1  폴더에 커밋 3회 하기~~~~
+
+** 퀴즈 : GUI/CLI 아무곳에서나,  저장소 생성하고 커밋 3회 정도.
+           리버트, 리셋, 스태시 실습해 보기.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
